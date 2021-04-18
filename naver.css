@@ -1,0 +1,751 @@
+/* 선택자(selector) */
+* {                         /* 모든 태그 명령문은 "*" */
+box-sizing: border-box; /* 컨텐트가 아닌 보더 기준으로 계산하라 */
+}
+
+html, body {
+    
+margin: 0;
+padding 0;
+font-family: Dotum, '돋움', Helvetica, "apple SD Gosthic Neo", sans-serif;   
+} 
+
+h1, h2, h3, h4, h5, h6{
+    
+margin: 0;
+}
+
+.inline-block {
+    
+display: inline-block;
+}
+
+.float-left {
+    
+float: left;
+}
+
+#fixed {
+    
+position: fixed;
+top: 50px;
+left: 50px;
+display: inline-block;
+width: 100px;
+height: 100px;
+border: 1px solid black;
+border-radius: 50px;
+}
+
+.blind {     /* .은 Class #은 id  여러번 사용되면 class 한번이면 id */
+    
+position: absolute;
+overflow: hidden;
+clip: rect(0 0 0 0);
+margin: -1px;
+width: 1px;
+height: 1px;  
+}
+
+
+.relative {
+    
+position: relative;
+}
+
+.center-align {  /* div#*** div만 생략 가능 */
+ 
+margin: 0 auto; /*margin 경계선*/
+width: 1080px;  /*width 너비*/
+}
+
+.login-signup {
+    
+float:right;
+font-size: 12px;
+line-height: 38px;
+color: #666;
+text-decoration: none  /* 하이퍼링크 밑줄 없애기 */
+}
+
+.login-signup:hover {
+    
+text-decoration:underline
+}
+
+header {
+    
+height: 170px;
+}
+
+#header-top {  /* 밑에 공간 여백과 간격 빠듯하게 설정할려면 float */
+    
+float: right;
+}
+
+#header-top span {
+    
+color:#888; 
+letter-spacing: -1px; /* 글자사이 간격 */
+font-size:11px;
+line-height: 22px;
+}
+
+#header-search {
+    
+clear: both;
+padding-top: 45px;
+}
+
+#header-search a {
+    
+text-decoration: none;  
+vertical-align: middle;
+}
+
+
+#header-search  h1 { /* 자식 선택만 > 필요 */
+    
+width: 198px;
+height: 48px;
+display: inline-block;
+background: url(./image/sp.png) -4px -4px no-repeat; /* ,no -repeat 중복되는 바둑판씩 사진 삭제 */
+vertical-align: middle;
+position: relative;
+top: -5px;
+}
+
+#header-search  h1 span {  /* 자식이 아닌 span은 자손이므로 > 제외 */
+    
+display: none;             /* 아예 사라지게 하는것. 보이지도 않고 해당 공간도 존재하지 않게 됨 */
+}
+
+
+
+#header-search h2 {
+    
+display: none;
+}
+
+#header-search fieldset {
+    
+width: 521px;
+height: 49px;
+margin-left: 20px;
+ /*padding-top: 12px;
+ padding-bottom: 12px;
+ padding-left: 10px;
+ padding-right: 0;*/
+padding:12px 0px 12px 10px; /* 위 오른쪽 아래 왼쪽 시계방향*/
+border: 2px solid #03cf5d;
+vertical-align: middle;
+display: inline-block; /* 인라인 빈 공간 확보가 불가능(텍스트영역만 확보, top, bottom 불가) 그러나 인라인 블록은 공간 확보 가능*/
+position: relative;  /* 자신의 원래 위치에서(static) 원하는 위치로 간단히 이동시키고자 할 때 사용 (상대적 의존) */
+top: -5px;
+left: 1px;
+}
+
+
+/* 해당 돋보기 이미지를 absolute right: -1px; top: -2px; 으로 설정하면 진짜 그대로 모니터 좌표로 가버림
+  그러나 우리는 검색창 오른쪽 부분으로 맞추고 싶은데 저기로 갔으므로, 자리를 지정시켜주도록 검색창 fieldset에 relative으로 잡는다. 
+   그럼 자식 absolute는 무조건 부모인 relative 좌표 기준에 맞춤. 고로 우리가 원하던 돋보기는 검색창 위치 고정에 적합해짐 */
+
+
+#header-search fieldset input {
+    
+border: none;
+padding: 0;
+outline: none;   /*검은 라인 없애기*/
+vertical-align: top;
+width: 405px;
+height: 23px;
+}
+
+#header-search fieldset button {
+
+width: 49px;
+height: 49px;
+border: none;
+padding: 0;
+background: #03cf5d;
+position: absolute;  /* 안하무인 그냥 해당 좌표 위치로 가버림 (절대적 독보) */
+right: -1px;
+top: -2px;
+}
+
+#search-now {
+    
+display: inline-block;
+height: 30px;
+font-size: 16px;
+}
+
+#search-age {
+    
+float:right;
+height: 30px;
+font-size: 13px;
+padding-right: 15px;
+color: #666;
+}
+
+#search-keyboard {
+    
+background-image: url(./image/sp.png);
+background-repeat: no-repeat;
+background-position: -33px -60px;
+width: 19px;
+height: 11px;
+display: inline-block;
+}
+
+
+#search-history {
+    
+background-image: url(./imagesp.png);
+background-repeat: no-repeat;
+background-position: -87px -60px;
+width: 19px;
+height: 4px;
+display: inline-block;
+}
+
+
+#search-image {
+    
+background-image: url(./image/sp.png);
+background-position: -3px -60px;
+background-repeat: no-repeat;
+width: 21px;
+height: 21px;
+display: inline-block;
+margin: 14px;
+}
+
+nav {
+    
+height: 46px;
+border-top: 1px solid #f1f3f6; /* 솔리드는 경계선 */
+border-bottom: 1px solid #d1d8e4;
+}
+
+nav ul {
+    
+display: inline-block;
+margin: 0;
+padding: 16px 0 0 4px;
+list-style: none;
+}
+
+#nav-menu li {
+    
+display: inline-block
+}
+
+
+#nav-menu li:first-child span:first-child {
+
+width: 25px;
+background-position: 0 -285px;
+margin-left: 0;
+}
+
+#nav-menu li span:first-child {
+height: 16px;
+display: inline-block;
+background-image: url(https://s.pstatic.net/static/www/img/uit/2019/sp_nav.png);
+background-repeat: no-repeat;
+margin-left: 10px;
+}
+
+#nav-menu li:nth-child(2) span:first-child {
+width: 27px;
+background-position: -279px -52px;
+}
+
+#nav-menu li:nth-child(3) span:first-child {
+width: 40px;
+background-position: -100px -182px;
+}
+
+#nav-menu li:nth-child(4) span:first-child {
+width: 40px;
+background-position: -101px -156px;
+}
+
+#nav-menu li:nth-child(5) span:first-child {
+width: 26px;
+background-position: -279px -156px;
+}
+
+#nav-menu li:nth-child(6) span:first-child {
+width: 25px;
+background-position: -70px -285px;
+}
+
+#nav-menu li:nth-child(7) span:first-child {
+width: 35px;
+background-position: -125px -130px;
+}
+
+#nav-menu li:nth-child(8) span:first-child {
+width: 26px;
+background-position: -279px -208px;
+}
+
+#nav-menu li:nth-child(9) span:first-child {
+width: 26px;
+background-position: -128px -104px;
+}
+
+#nav-menu li:nth-child(10) span:first-child {
+width: 26px;
+background-position: -36px -259px;
+}
+
+#nav-menu li:nth-child(11) span:first-child {
+width: 39px;
+background-position: -151px -156px;
+}
+
+#nav-menu li:nth-child(12) span:first-child {
+width: 26px;
+background-position: -279px -130px;
+}
+
+#nav-menu li:nth-child(13) span:first-child {
+width: 26px;
+background-position: -234px -233px;
+}
+
+#nav-menu li:nth-child(14) span:first-child {
+width: 26px;
+background-position: -72px -259px;
+}
+
+#nav-menu li:nth-child(15) span:first-child {
+width: 13px;
+background-position: -140px -78px;
+}
+
+#nav-menu li:nth-child(16) span:first-child {
+width: 26px;
+background-position: -279px 0;
+}
+
+#nav-menu li.more:first-child span:first-child {
+width: 55px;
+background-position: 0 -104px;
+}
+
+.nav-divider {
+    
+display: inline-block;
+margin: 18px 16px 0;
+width: 1px;
+height: 14px;
+background: #ebeef3;
+}
+
+#search-ranking {
+    
+position: absolute;
+top: 14px;
+right: 0px;
+width: 198px;
+height: 20px;
+}
+
+#search-ranking:hover ul {
+
+display: inline-block;
+}
+
+#search-ranking ul {
+    
+display: none;
+list-style: none;
+padding: 17;
+margin:  0;
+width: 332px;
+height: 334px;
+border: 1px solid #aaa;
+background-color: white;
+position: absolute;
+top:-15px;
+right:0px;
+}
+
+#rank-number {
+
+margin-top: -9px;
+font-size: 16px;
+color: #03c75a;
+} 
+
+
+#rank-title {
+letter-spacing: -1px;
+font-size: 14px;
+}
+
+main {
+
+background-color: #f2f4f7;
+display: inline-block;
+width: 100%;
+}
+
+#main-centered {
+    
+padding: 8px; 10px;
+width: 1100px;
+}
+
+#main-ad {
+    
+display: inline-block;
+width: 740px;
+height: 120px;
+background: #555;
+margin-right: 8px;     /* 양쪽 카테고리 간격을 마진으로 잡음 */
+margin-bottom: 8px;
+float: left;
+}
+
+#main-login {
+
+width: 332px;
+height: 120px;
+vertical-align: top;
+background-color: white;
+margin-bottom: 8px;
+float: left;
+}
+
+#main-login .login-wrapper{
+    
+padding: 15px 25px; 
+}
+
+#main-login .login-wrapper a {
+
+display: block;
+}
+
+
+#main-login .login-text{
+
+color: #888;
+font-size: 12px;
+line-height:14px;
+
+}
+
+
+#main-login .login-image {
+
+margin-top: 12px;
+background: url(./image/sp_login.png) 0 -47px no-repeat;
+display: inline-block;
+width: 280px;
+height: 37px;
+}
+
+#main-ytn {
+    
+display: inline-block;
+width: 740px;
+height: 46px;
+background-color: white;
+margin-bottom: 8px;
+}
+
+#main-ytn h3, 
+#main-ytn ol {
+    
+display: inline-block;
+}
+
+#main-ytn h3, #main-newsstand h3 {
+    
+font-size: 14px;
+font-family: NanumSquare,Dotum,"돋움",Helvetica,AppleSDGothicNeo,sans-serif;
+padding-top: 15px;
+padding-left: 15px;
+vertical-align: top;
+}
+
+#main-newsstand {
+    
+display: inline-block;
+width: 740px;
+height: 246px;
+background-color: white;
+margin-right: 8px;
+vertical-align: top;
+}
+
+#main-newsstand h3 {
+    
+height: 45px;
+border-bottom : 1px solid #ebeef3;
+}
+
+
+#main-newsstand ul {
+display: inline-block;
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+#main-newsstand li {
+
+float: left; 
+width:calc(100% / 6);
+height:67px;
+border-right : 1px solid #ebeef3;
+border-bottom : 1px solid #ebeef3;
+text-align: center;
+}
+
+#main-newsstand li img {
+    
+position: relative;
+top:50%;
+transform: translateY(-50%);
+}
+
+#main-weather {
+    
+display: inline-block;
+width: 332px;
+height: 142px;
+background-color: white;
+margin-bottom: 8px;
+vertical-align: top;
+}
+
+#main-second-ad {
+    
+display: inline-block;
+width: 332px;
+height: 120px;
+background: #555;
+}
+
+#main-sub-ad {
+    
+display: inline-block;
+width: 332px;
+height: 150px;
+background: #555;
+}
+
+#main-category {
+    
+float:left;                    /* 인라인블록의 고질적인 문제: 앞 문단 뒷 문단 서로 인라인 블록 겹치면 5 픽셀 버그? 발생으로 뒷 문단 밑으로 밀림. 그러하여 플롯 레프트를 활용 추천!!! */
+width: 740px;                  /* 가로 간격의 위한 수정에는 플롯 : 레프트 세로 간격의 위한 수정은 버티컬 얼리 : 탑*/                    
+height: 882px;
+background: white;
+margin-bottom: 8px;
+margin-right: 8px;
+}
+
+#main-shopping {
+    
+float:left;
+width: 336px;
+height: 880px;
+background: white;
+margin-bottom: 8px;
+}
+
+#main-shopping iframe {
+    
+width: 100%;
+height: 100%;
+border: 0;
+}
+
+#main-event {
+    
+display: inline-block;
+width: 740px;
+height: 130px;
+background: white; 
+vertical-align: top;
+margin-right: 8px;
+}
+
+#main-third-ad {
+    
+display: inline-block;
+width: 331px;
+height: 130px;
+background: #555;
+}
+
+#main-first-block {
+
+display: inline-block;
+width: 100%;
+vertical-align: top;
+}
+
+#main-second-block {
+    
+display: inline-block;
+vertical-align: top;
+margin-bottom: 8px;
+}
+
+#main-secnond-block .float-left:first-child {
+ 
+width:740px;  
+margin-right: 8px;
+}
+
+#main-secnond-block .float-left:last-child {
+ 
+width:332px;
+vertical-align: top;
+}
+
+#main-third-block
+#main-fourth-block {
+    
+display: inline-block;
+width: 100%;
+}
+
+#main-category-top {
+    
+display: inline-block;
+width: 100%;
+border-bottom: 1px solid #ebeef3;
+}
+
+#subject-list, #subject-all, #subject-prev, #subject-next {
+    
+float:left;
+height: 45px;
+padding: 0;
+}
+
+#subject-list {
+    
+width: 605px;
+position: relative;
+}
+
+#subject-list ul {
+    
+list-style: none;
+margin: 0;
+padding: 0;
+white-space: nowrap;
+overflow: hidden;
+height: 45px;
+width: 700px;
+}
+
+#subject-list li {
+    
+float: left;
+margin-right: 10px;
+padding: 14px 7px 0;
+font-size: 14px;
+font-family: NanumSquare, Dotum,"돋움", Helvetica, AppleSDGothicNeo, sans-serif;
+}
+
+#subject-list li.highlight {
+    
+border-bottom: 3px solid #00c73c;
+color: #00b336;
+font-weight: 700; /* 글자 굵기 */
+height: 45px;
+}
+
+.opacity {
+    
+opacity: 0.5; /* 투명도 */
+background:white;
+}
+
+.opacity.left {
+    
+position: absolute;
+left: 0;
+top: 0;
+height: 45px;
+width: 15px;
+}
+
+.opacity.right {
+    
+position: absolute;
+right: 0;
+top: 0;
+height: 45px;
+width: 15px;
+}
+
+#subject-all, #subject-prev, #subject-next {
+    
+position: relative;
+width: 45px;
+background: white;
+border: none;
+border-left: 1px solid #ebeef3;
+}
+
+#subject-all span:last-child {
+
+position: absolute;
+top: 15px;
+left: 16px;
+width: 20px;
+height: 14px;
+background-image: url(./image/sp_themecast.png);
+background-repeat: no-repeat;
+background-position: -218px -257px;
+}
+
+#subject-prev span:last-child {
+
+position: absolute;
+top: 15px;
+left: 16px;
+width: 8px;
+height: 16px;
+background-image: url(./image/sp_themecast.png);
+background-repeat: no-repeat;
+background-position: -320px 0;
+}
+
+#subject-next span:last-child {
+
+position: absolute;
+top: 15px;
+left: 16px;
+width: 8px;
+height: 16px;
+background-image: url(./image/sp_themecast.png);
+background-repeat: no-repeat;
+background-position: -320px -52px;
+}
+
+#middle {
+    
+text-align: center;   
+}
+
+.corp {
+float:inherit;
+font-size: 12px;
+line-height: 38px;
+color: #666;
+text-decoration: none;
+}
